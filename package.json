@@ -1,7 +1,7 @@
 {
   "name": "filter-clone",
   "version": "0.0.4",
-  "description": " cloning of objects and arrays",
+  "description": " cloning of objects and arrays by set some filters",
   "main": "lib/index.js",
   "scripts": {
     "build": "npx babel src --out-dir lib --source-maps",
@@ -9,7 +9,8 @@
   },
   "keywords": [
     "js",
-    "clone"
+    "clone",
+    "filter"
   ],
   "author": "yaotaiyang99@gmail.com",
   "license": "MIT",
