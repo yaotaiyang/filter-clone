@@ -1,0 +1,22 @@
+{
+  "name": "filter-clone",
+  "version": "0.0.2",
+  "description": " cloning of objects and arrays",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "npx babel src --out-dir lib --source-maps",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "js",
+    "clone"
+  ],
+  "author": "yaotaiyang99@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
+  },
+  "dependencies": {}
+}
