@@ -1,6 +1,6 @@
 {
   "name": "filter-clone",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": " cloning of objects and arrays",
   "main": "lib/index.js",
   "scripts": {
