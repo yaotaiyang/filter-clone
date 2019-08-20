@@ -1,0 +1,1 @@
+declare function filterClone(object:object,include:array|regexp,exclude:array|regexp):any
