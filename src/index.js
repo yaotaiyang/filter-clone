@@ -1,49 +1,58 @@
 export function filterClone(obj, include, exclude) {
-  let res;
-  if (typeof obj == "object") {
-    if (getType(obj) === "array") {
-      res = [];
+  let res
+  if (typeof obj == 'object') {
+    if (getType(obj) === 'array') {
+      res = []
       for (let i = 0, len = obj.length; i < len; i++) {
-        res.push(filterClone(obj[i], include, exclude));
+        res.push(filterClone(obj[i], include, exclude))
       }
     } else {
-      res = {};
+      res = {}
       for (let j in obj) {
-        if (include && getType(include) === "array" && include.length) {
+        if (include && getType(include) === 'array' && include.length) {
           if (include.indexOf(j) != -1) {
-            res[j] = filterClone(obj[j], include, exclude);
+            res[j] = filterClone(obj[j], include, exclude)
           }
-        } else if (include && getType(include) === "regexp") {
+        } else if (include && getType(include) === 'regexp') {
           if (include.test(j)) {
-            res[j] = filterClone(obj[j], include, exclude);
+            res[j] = filterClone(obj[j], include, exclude)
           }
-        } else if (exclude && getType(exclude) === "array" && exclude.length) {
+        } else if (include && getType(include) === 'function') {
+          if (include(j, obj[j])) {
+            res[j] = filterClone(obj[j], include, exclude)
+          }
+        } else if (exclude && getType(exclude) === 'array' && exclude.length) {
           if (exclude.indexOf(j) === -1) {
-            res[j] = filterClone(obj[j], include, exclude);
+            res[j] = filterClone(obj[j], include, exclude)
           }
-        } else if (exclude && getType(exclude) === "regexp") {
+        } else if (exclude && getType(exclude) === 'regexp') {
           if (!exclude.test(j)) {
-            res[j] = filterClone(obj[j], include, exclude);
+            res[j] = filterClone(obj[j], include, exclude)
+          }
+        } else if (exclude && getType(exclude) === 'function') {
+          if (!exclude(j, obj[j])) {
+            res[j] = filterClone(obj[j], include, exclude)
           }
         } else {
-          res[j] = filterClone(obj[j], include, exclude);
+          res[j] = filterClone(obj[j], include, exclude)
         }
       }
     }
   } else {
-    res = obj;
+    res = obj
   }
-  return res;
+  return res
 }
+export default filterClone
 export function getType(value) {
-  const str = typeof value;
-  if (str === "object") {
+  const str = typeof value
+  if (str === 'object') {
     return value === null
       ? null
       : Object.prototype.toString
           .call(value)
           .slice(8, -1)
-          .toLowerCase();
+          .toLowerCase()
   }
-  return str;
+  return str
 }
