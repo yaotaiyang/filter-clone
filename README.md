@@ -38,16 +38,12 @@ var b3 = filterClone(obj, null, /a/)
  ***/
 var obj = { a: 123, b: 234, c: [1, 2, 3] }
 var b4 = filterClone(obj, function(key, value) {
-  if (value > 1) {
-    return true
-  }
+  return value > 1
 })
 //{a: 123, b: 234}
 
 var b5 = filterClone(obj, null, function(key, value) {
-  if (value > 1) {
-    return true
-  }
+  return value > 1
 })
 //{c: Array(3)}
 ```
