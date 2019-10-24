@@ -1,4 +1,4 @@
-export function filterClone(obj, include, exclude) {
+function filterClone(obj, include, exclude) {
   let res
   if (typeof obj == 'object') {
     if (getType(obj) === 'array') {
@@ -7,7 +7,7 @@ export function filterClone(obj, include, exclude) {
         res.push(filterClone(obj[i], include, exclude))
       }
     } else {
-      res = {}
+      res = Object.create(null)
       for (let j in obj) {
         if (include && getType(include) === 'array' && include.length) {
           if (include.indexOf(j) != -1) {
@@ -43,8 +43,7 @@ export function filterClone(obj, include, exclude) {
   }
   return res
 }
-export default filterClone
-export function getType(value) {
+function getType(value) {
   const str = typeof value
   if (str === 'object') {
     return value === null
@@ -56,3 +55,4 @@ export function getType(value) {
   }
   return str
 }
+export default filterClone

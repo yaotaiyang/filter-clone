@@ -3,6 +3,12 @@ you can easy copy a js object
 use like this:
 
 ```javascript
+npm install filter-clone --save
+```
+
+```javascript
+import filterClone from 'filter-clone'
+// some code
 filterClone(object, include, exclude)
 ```
 
