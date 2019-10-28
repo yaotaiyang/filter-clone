@@ -6,7 +6,7 @@ function filterClone(obj, include, exclude) {
       for (let i = 0, len = obj.length; i < len; i++) {
         res.push(filterClone(obj[i], include, exclude))
       }
-    } else {
+    } else if (obj !== null) {
       res = Object.create(null)
       for (let j in obj) {
         if (include && getType(include) === 'array' && include.length) {
@@ -42,17 +42,17 @@ function filterClone(obj, include, exclude) {
     res = obj
   }
   return res
-}
-function getType(value) {
-  const str = typeof value
-  if (str === 'object') {
-    return value === null
-      ? null
-      : Object.prototype.toString
-          .call(value)
-          .slice(8, -1)
-          .toLowerCase()
+  function getType(value) {
+    const str = typeof value
+    if (str === 'object') {
+      return value === null
+        ? null
+        : Object.prototype.toString
+            .call(value)
+            .slice(8, -1)
+            .toLowerCase()
+    }
+    return str
   }
-  return str
 }
 export default filterClone
