@@ -1,5 +1,5 @@
 function filterClone(obj, include, exclude) {
-  let res
+  let res = obj
   if (typeof obj == 'object') {
     if (getType(obj) === 'array') {
       res = []
@@ -38,8 +38,6 @@ function filterClone(obj, include, exclude) {
         }
       }
     }
-  } else {
-    res = obj
   }
   return res
   function getType(value) {
